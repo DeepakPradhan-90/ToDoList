@@ -7,7 +7,6 @@ const SegmentedControl = props => {
   const translateValue = (props.width - 4) / props?.tabs?.length;
   const tabTranslate = React.useRef(new Animated.Value(0)).current;
 
-  // useCallBack with an empty array as input, which will call inner lambda only once and memoize the reference for future calls
   const memoizedTabPressCallback = React.useCallback(
     index => {
       props?.onChange(index);

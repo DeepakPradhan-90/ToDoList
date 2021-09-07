@@ -1,5 +1,11 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import {
+  faStar as faStarSolid,
+  faEllipsisV,
+} from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
 import styles from './Styles';
 
 const ListItem = ({ item, onFavorite, onOption, onSave }) => {
@@ -8,17 +14,14 @@ const ListItem = ({ item, onFavorite, onOption, onSave }) => {
     <View style={styles.listItem}>
       <Text style={styles.listItemTitle}>{item.title}</Text>
       <TouchableOpacity onPress={() => onFavorite(item.id)}>
-        <Image
-          style={styles.icon}
-          source={
-            item.isFavorite
-              ? require('./assets/favorites-filled.png')
-              : require('./assets/favorites-outline.png')
-          }
+        <FontAwesomeIcon
+          icon={item.isFavorite ? faStarSolid : faStar}
+          color={item.isFavorite ? '#FFBA01' : '#B0B0B3'}
+          size={24}
         />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => onOption(item.id)}>
-        <Image style={styles.icon} source={require('./assets/option.png')} />
+        <FontAwesomeIcon icon={faEllipsisV} color={'#B0B0B3'} size={24} />
       </TouchableOpacity>
     </View>
   ) : (
